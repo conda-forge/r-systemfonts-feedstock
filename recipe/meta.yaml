@@ -1,4 +1,4 @@
-{% set version = "0.2.0" %}
+{% set version = "0.2.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/systemfonts_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/systemfonts/systemfonts_{{ version }}.tar.gz
-  sha256: 4de3c0c4d63cc64db3efa428ad33b4ad395197667ff3d5b4ad0df72ddb016aa9
+  sha256: f8798233a992a5f123d8c7283a8f3b18065932f11e0c449639fc82a83a00ca36
 
 build:
   merge_build_host: true  # [win]
@@ -25,21 +25,21 @@ requirements:
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
-    - {{posix}}filesystem        # [win]
-    - {{posix}}sed               # [win]
-    - {{posix}}grep              # [win]
-    - {{posix}}autoconf
-    - {{posix}}automake          # [not win]
-    - {{posix}}automake-wrapper  # [win]
-    - {{posix}}pkg-config
-    - {{posix}}make
-    - {{posix}}coreutils         # [win]
-    - {{posix}}zip               # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}sed               # [win]
+    - {{ posix }}grep              # [win]
+    - {{ posix }}autoconf
+    - {{ posix }}automake          # [not win]
+    - {{ posix }}automake-wrapper  # [win]
+    - {{ posix }}pkg-config
+    - {{ posix }}make
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
   host:
     - r-base
   run:
     - r-base
-    - {{native}}gcc-libs         # [win]
+    - {{ native }}gcc-libs         # [win]
 
 test:
   commands:
@@ -50,8 +50,7 @@ about:
   home: https://github.com/r-lib/systemfonts
   license: MIT
   license_file: LICENSE
-  summary: Provides system native access to the font catalogue. As font handling varies between systems it is difficult to correctly locate  installed fonts across
-    different operating systems. The 'systemfonts'  package provides bindings to the native libraries on Windows, macOS and  Linux for finding font files that can
+  summary: Provides system native access to the font catalogue. As font handling varies between systems it is difficult to correctly locate  installed fonts across different operating systems. The 'systemfonts'  package provides bindings to the native libraries on Windows, macOS and  Linux for finding font files that can
     then be used further by e.g. graphic devices. The main use is intended to be from compiled code but 'systemfonts' also provides access from R.
   license_family: MIT
 
