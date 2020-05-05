@@ -20,7 +20,11 @@ cxx_compiler_version:
 - '7'
 docker_image:
 - condaforge/linux-anvil-aarch64
+freetype:
+- 2.9.1
 pin_run_as_build:
+  freetype:
+    max_pin: x
   r-base:
     min_pin: x.x
     max_pin: x.x
