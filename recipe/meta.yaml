@@ -37,6 +37,7 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - freetype
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
