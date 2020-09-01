@@ -37,6 +37,7 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-cpp11
     - freetype
   run:
     - r-base
