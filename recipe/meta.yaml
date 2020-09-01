@@ -1,4 +1,4 @@
-{% set version = "0.2.3" %}
+{% set version = "0.3.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/systemfonts_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/systemfonts/systemfonts_{{ version }}.tar.gz
-  sha256: cb5251af974c488dee8331a771802cf69e0849f4ab650e26cbf497aa5c15c671
+  sha256: 5d2192b160697d302d17d7f2fc8efb2f0c83d69cba499e0ade201b62e32ac29a
 
 build:
   merge_build_host: true  # [win]
