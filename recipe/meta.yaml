@@ -1,4 +1,4 @@
-{% set version = "0.2.3" %}
+{% set version = "0.3.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/systemfonts_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/systemfonts/systemfonts_{{ version }}.tar.gz
-  sha256: cb5251af974c488dee8331a771802cf69e0849f4ab650e26cbf497aa5c15c671
+  sha256: e0ebb170d810376c0b9e2600143f237721b2ee4fbc93bdd8135747ef157bbd51
 
 build:
   merge_build_host: true  # [win]
@@ -37,10 +37,12 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-cpp11
     - freetype
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
+    - r-cpp11
 
 test:
   commands:
@@ -50,10 +52,12 @@ test:
 about:
   home: https://github.com/r-lib/systemfonts
   license: MIT
-  license_file: LICENSE
   summary: Provides system native access to the font catalogue. As font handling varies between systems it is difficult to correctly locate  installed fonts across different operating systems. The 'systemfonts'  package provides bindings to the native libraries on Windows, macOS and  Linux for finding font files that can
     then be used further by e.g. graphic devices. The main use is intended to be from compiled code but 'systemfonts' also provides access from R.
   license_family: MIT
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
+    - LICENSE
 
 extra:
   recipe-maintainers:
