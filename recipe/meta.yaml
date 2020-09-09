@@ -38,6 +38,7 @@ requirements:
   host:
     - r-base
     - r-cpp11
+    - freetype
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
