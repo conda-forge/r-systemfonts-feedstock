@@ -37,10 +37,11 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - freetype
+    - r-cpp11
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
+    - r-cpp11
 
 test:
   commands:
@@ -50,10 +51,12 @@ test:
 about:
   home: https://github.com/r-lib/systemfonts
   license: MIT
-  license_file: LICENSE
   summary: Provides system native access to the font catalogue. As font handling varies between systems it is difficult to correctly locate  installed fonts across different operating systems. The 'systemfonts'  package provides bindings to the native libraries on Windows, macOS and  Linux for finding font files that can
     then be used further by e.g. graphic devices. The main use is intended to be from compiled code but 'systemfonts' also provides access from R.
   license_family: MIT
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
+    - LICENSE
 
 extra:
   recipe-maintainers:
