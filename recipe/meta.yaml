@@ -1,4 +1,4 @@
-{% set version = "1.0.6" %}
+{% set version = "1.1.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/systemfonts_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/systemfonts/systemfonts_{{ version }}.tar.gz
-  sha256: d1586e7b6ecdcb5af6559a30f58b806d347e570724313cb9cb655a27ad581dd7
+  sha256: 1941069bd20320284ec026a38c53cb736be60bda431303ceaf8fd27ae13fb644
 
 build:
   merge_build_host: true  # [win]
@@ -21,12 +21,15 @@ build:
 
 requirements:
   build:
-    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
-    - r-cpp11                    # [build_platform != target_platform]
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - r-cpp11                      # [build_platform != target_platform]
+    - r-lifecycle                  # [build_platform != target_platform]
+    - {{ compiler('c') }}          # [not win]
+    - {{ stdlib("c") }}            # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -39,20 +42,23 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - r-cpp11
+    - r-cpp11 >=0.2.1
+    - r-lifecycle
     - freetype
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-cpp11
-
+    - r-cpp11 >=0.2.1
+    - r-lifecycle
+    
 test:
   commands:
     - $R -e "library('systemfonts')"           # [not win]
     - "\"%R%\" -e \"library('systemfonts')\""  # [win]
 
 about:
-  home: https://github.com/r-lib/systemfonts
+  home: https://systemfonts.r-lib.org
+  dev_url: https://github.com/r-lib/systemfonts
   license: MIT
   summary: Provides system native access to the font catalogue. As font handling varies between systems it is difficult to correctly locate  installed fonts across different operating systems. The 'systemfonts'  package provides bindings to the native libraries on Windows, macOS and  Linux for finding font files that can
     then be used further by e.g. graphic devices. The main use is intended to be from compiled code but 'systemfonts' also provides access from R.
@@ -64,24 +70,3 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
-
-# Package: systemfonts
-# Type: Package
-# Title: System Native Font Finding
-# Version: 0.1.1
-# Authors@R:  c(person(given = "Thomas Lin", family = "Pedersen", role = c("aut", "cre"), email = "thomas.pedersen@rstudio.com"), person(given = "Jeroen",  family = "Ooms",  role = "aut", email = "jeroen@berkeley.edu", comment = c(ORCID = "0000-0002-4035-0289")), person(given = "Devon", family = "Govett", role = "aut", comment = "Author of font-manager"), person(given = "RStudio", role = "cph"))
-# Maintainer: Thomas Lin Pedersen <thomas.pedersen@rstudio.com>
-# Description: Provides system native access to the font catalogue. As font handling varies between systems it is difficult to correctly locate  installed fonts across different operating systems. The 'systemfonts'  package provides bindings to the native libraries on Windows, macOS and  Linux for finding font files that can then be used further by e.g. graphic devices. The main use is intended to be from compiled code but 'systemfonts' also provides access from R.
-# License: MIT + file LICENSE
-# Encoding: UTF-8
-# LazyData: true
-# RoxygenNote: 6.1.1
-# Suggests: testthat (>= 2.1.0), covr, knitr, rmarkdown, tools
-# VignetteBuilder: knitr
-# URL: https://github.com/r-lib/systemfonts
-# BugReports: https://github.com/r-lib/systemfonts/issues
-# NeedsCompilation: yes
-# Packaged: 2019-07-01 11:23:59 UTC; thomas
-# Author: Thomas Lin Pedersen [aut, cre], Jeroen Ooms [aut] (<https://orcid.org/0000-0002-4035-0289>), Devon Govett [aut] (Author of font-manager), RStudio [cph]
-# Repository: CRAN
-# Date/Publication: 2019-07-01 12:50:02 UTC

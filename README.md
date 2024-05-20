@@ -7,20 +7,24 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-systemfonts-f
 About r-systemfonts
 -------------------
 
-Home: https://github.com/r-lib/systemfonts
+Home: https://systemfonts.r-lib.org
 
 Package license: MIT
 
 Summary: Provides system native access to the font catalogue. As font handling varies between systems it is difficult to correctly locate  installed fonts across different operating systems. The 'systemfonts'  package provides bindings to the native libraries on Windows, macOS and  Linux for finding font files that can then be used further by e.g. graphic devices. The main use is intended to be from compiled code but 'systemfonts' also provides access from R.
+
+Development: https://github.com/r-lib/systemfonts
 
 About r-systemfonts
 -------------------
 
-Home: https://github.com/r-lib/systemfonts
+Home: https://systemfonts.r-lib.org
 
 Package license: MIT
 
 Summary: Provides system native access to the font catalogue. As font handling varies between systems it is difficult to correctly locate  installed fonts across different operating systems. The 'systemfonts'  package provides bindings to the native libraries on Windows, macOS and  Linux for finding font files that can then be used further by e.g. graphic devices. The main use is intended to be from compiled code but 'systemfonts' also provides access from R.
+
+Development: https://github.com/r-lib/systemfonts
 
 Current build status
 ====================
