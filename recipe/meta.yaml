@@ -21,6 +21,7 @@ requirements:
   build:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
     - r-cpp11                      # [build_platform != target_platform]
+    - r-jsonlite                      # [build_platform != target_platform]
     - r-lifecycle                  # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
     - {{ stdlib("c") }}            # [not win]
@@ -41,11 +42,13 @@ requirements:
   host:
     - r-base
     - r-cpp11 >=0.2.1
+    - r-jsonlite
     - r-lifecycle
     - freetype
   run:
     - r-base
     - r-cpp11 >=0.2.1
+    - r-jsonlite
     - r-lifecycle
 
 test:
@@ -59,7 +62,6 @@ about:
   license: MIT
   summary: Provides system native access to the font catalogue. As font handling varies between systems it is difficult to correctly locate  installed fonts across different operating systems. The 'systemfonts'  package provides bindings to the native libraries on Windows, macOS and  Linux for finding font files that can
     then be used further by e.g. graphic devices. The main use is intended to be from compiled code but 'systemfonts' also provides access from R.
-  license_family: MIT
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
     - LICENSE
