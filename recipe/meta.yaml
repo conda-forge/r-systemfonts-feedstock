@@ -1,4 +1,4 @@
-{% set version = "1.2.1" %}
+{% set version = "1.2.2" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/systemfonts_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/systemfonts/systemfonts_{{ version }}.tar.gz
-  sha256: 0dd1116bd214756aa460de4a2d9ed87273ac32904a089601e1be4788f708776a
+  sha256: f40051080fcf357f77289726138d341b0df4531345b7bbc5b5442ff0361a5126
 
 build:
   number: 0
