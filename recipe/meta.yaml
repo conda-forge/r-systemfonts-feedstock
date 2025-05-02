@@ -46,6 +46,7 @@ requirements:
     - r-cpp11 >=0.2.1
     - r-jsonlite
     - r-lifecycle
+    - freetype
   run:
     - r-base
     - r-base64enc
